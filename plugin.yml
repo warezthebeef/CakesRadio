@@ -1,0 +1,13 @@
+name: CakesRadio
+main: me.cakenggt.CakesRadio.CakesRadio
+version: 2.6-exphc
+author: cakenggt
+permissions:
+  cakesradio.radio:
+      description: gives access to radio
+      default: true
+commands:
+  radio:
+    description: This command sets your radio frequency.
+    permission: cakesradio.radio
+    usage: Example usage /radio 1335
