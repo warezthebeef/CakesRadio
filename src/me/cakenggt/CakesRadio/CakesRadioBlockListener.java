@@ -36,20 +36,20 @@ public class CakesRadioBlockListener implements Listener {
 		//System.out.println("redstone change event");
 
 		Block radio = event.getBlock();
-		if (event.getBlock().getRelative(1, 0, 0).getType() == Material.JUKEBOX)
+		if (event.getBlock().getRelative(1, 0, 0).getType() == Material.getMaterial(p.getRadioBlock()))
 			radio = event.getBlock().getRelative(1, 0, 0);
-		else if (event.getBlock().getRelative(-1, 0, 0).getType() == Material.JUKEBOX)
+		else if (event.getBlock().getRelative(-1, 0, 0).getType() == Material.getMaterial(p.getRadioBlock()))
 			radio = event.getBlock().getRelative(-1, 0, 0);
-		else if (event.getBlock().getRelative(0, 0, 1).getType() == Material.JUKEBOX)
+		else if (event.getBlock().getRelative(0, 0, 1).getType() == Material.getMaterial(p.getRadioBlock()))
 			radio = event.getBlock().getRelative(0, 0, 1);
-		else if (event.getBlock().getRelative(0, 0, -1).getType() == Material.JUKEBOX)
+		else if (event.getBlock().getRelative(0, 0, -1).getType() == Material.getMaterial(p.getRadioBlock()))
 			radio = event.getBlock().getRelative(0, 0, -1);
 		else if (event.getBlock().getType() == Material.WALL_SIGN)
 			return;
 		else{
 			return;
 		}
-		if (radio.getType() == Material.JUKEBOX && (radio.getRelative(BlockFace.NORTH).getType() == Material.WALL_SIGN || radio.getRelative(BlockFace.EAST).getType() == Material.WALL_SIGN || radio.getRelative(BlockFace.SOUTH).getType() == Material.WALL_SIGN || radio.getRelative(BlockFace.WEST).getType() == Material.WALL_SIGN)){
+		if (radio.getType() == Material.getMaterial(p.getRadioBlock()) && (radio.getRelative(BlockFace.NORTH).getType() == Material.WALL_SIGN || radio.getRelative(BlockFace.EAST).getType() == Material.WALL_SIGN || radio.getRelative(BlockFace.SOUTH).getType() == Material.WALL_SIGN || radio.getRelative(BlockFace.WEST).getType() == Material.WALL_SIGN)){
 			if (event.getOldCurrent() < event.getNewCurrent()){
 				Block actBlock = radio;
 				try {

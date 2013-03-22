@@ -51,7 +51,7 @@ public class CakesRadioPlayerInteract implements Listener {
 		}
 		
 		/* Set compass center point to a radio location if you right-click on it while it's powered */
-		if (block.getType() == Material.JUKEBOX && player.getItemInHand().getType() == Material.COMPASS && event.getAction() == Action.RIGHT_CLICK_BLOCK && (block.getBlockPower(BlockFace.NORTH) > 0 || block.getBlockPower(BlockFace.SOUTH) > 0 || block.getBlockPower(BlockFace.EAST) > 0 || block.getBlockPower(BlockFace.WEST) > 0) ){
+		if (block.getType() == Material.getMaterial(p.getRadioBlock()) && player.getItemInHand().getType() == Material.COMPASS && event.getAction() == Action.RIGHT_CLICK_BLOCK && (block.getBlockPower(BlockFace.NORTH) > 0 || block.getBlockPower(BlockFace.SOUTH) > 0 || block.getBlockPower(BlockFace.EAST) > 0 || block.getBlockPower(BlockFace.WEST) > 0) ){
 			player.setCompassTarget(block.getLocation());
 		}
 		else
