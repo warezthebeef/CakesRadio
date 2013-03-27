@@ -210,7 +210,7 @@ class CakesRadioBroadcast
 			inputFile.close();
 			if (setFrequency.equals("scan") && player.getInventory().contains(this.p.getPipboyID())){
 				double random = Math.random() * 100;
-				return random <= 1;
+				return random <= p.getRadioScan();
 			}
 			try {
 		        Double.parseDouble(setFrequency);

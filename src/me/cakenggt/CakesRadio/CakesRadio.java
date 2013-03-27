@@ -41,6 +41,7 @@ public class CakesRadio extends JavaPlugin {
 	private CakesRadioBroadcast broadcast;
 	private int size = 10000;
 	private int radioBlock = Material.JUKEBOX.getId();
+	private double radioScan = 1;
 	private Map<World, Boolean> worldsTable = new HashMap<World, Boolean>();
 
 
@@ -121,6 +122,7 @@ public class CakesRadio extends JavaPlugin {
 
 	      config.set("pipboyID", pipboyID);
 	      config.set("radioBlock", Material.JUKEBOX.getId());
+	      config.set("radioScan", 1);
 
 
 	      try {
@@ -137,6 +139,7 @@ public class CakesRadio extends JavaPlugin {
 	    }
 	    this.setSize(config.getInt("size", this.getSize()));
 	    this.setRadioBlock(config.getInt("radioBlock", this.getRadioBlock()));
+	    this.setRadioScan(config.getDouble("radioScan", this.getRadioScan()));
 	    
 	    for (World world : getServer().getWorlds()){
 	    	this.setOn(world, config.getBoolean("worlds." + world.getName(), false));
@@ -196,6 +199,14 @@ public class CakesRadio extends JavaPlugin {
 		return radioBlock;
 	}
 
+	public void setRadioScan(double radioScan) {
+		this.radioScan = radioScan;
+	}
+	
+	public double getRadioScan() {
+		return radioScan;
+	}
+	
 	public void setOn(World world, boolean isOn){
 		this.worldsTable.put(world, isOn);
 	}
