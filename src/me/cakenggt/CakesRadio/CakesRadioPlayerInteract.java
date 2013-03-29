@@ -38,20 +38,31 @@ public class CakesRadioPlayerInteract implements Listener {
 		if (!this.p.getOn().get(event.getPlayer().getWorld())){
 			return;
 		}
+
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK)
+		{
 			return;
+		}
+		
 		Player player = event.getPlayer();
+		
+		if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.COMPASS)
+		{
+			return;
+		}
+		
 		Block block = event.getClickedBlock();
 		//System.out.println(block.getBlockPower(BlockFace.NORTH) > 0);
 		//System.out.println(block.getBlockPower(BlockFace.SOUTH) > 0);
 		//System.out.println(block.getBlockPower(BlockFace.EAST) > 0);
 		//System.out.println(block.getBlockPower(BlockFace.WEST) > 0);
-		if (player.getItemInHand() == null){
-			return;
-		}
+
+		
 		
 		/* Set compass center point to a radio location if you right-click on it while it's powered */
-		if (block.getType() == Material.getMaterial(p.getRadioBlock()) && player.getItemInHand().getType() == Material.COMPASS && event.getAction() == Action.RIGHT_CLICK_BLOCK && (block.getBlockPower(BlockFace.NORTH) > 0 || block.getBlockPower(BlockFace.SOUTH) > 0 || block.getBlockPower(BlockFace.EAST) > 0 || block.getBlockPower(BlockFace.WEST) > 0) ){
+		// if (block.getType() == Material.getMaterial(p.getRadioBlock()) && player.getItemInHand().getType() == Material.COMPASS && event.getAction() == Action.RIGHT_CLICK_BLOCK && (block.getBlockPower(BlockFace.NORTH) > 0 || block.getBlockPower(BlockFace.SOUTH) > 0 || block.getBlockPower(BlockFace.EAST) > 0 || block.getBlockPower(BlockFace.WEST) > 0) ){
+			
+		if (block.getType() == Material.getMaterial(p.getRadioBlock()) && player.getItemInHand().getType() == Material.COMPASS && event.getAction() == Action.RIGHT_CLICK_BLOCK && p.getRadios().contains(block.getLocation()) && block.isBlockIndirectlyPowered() ){			
 			player.setCompassTarget(block.getLocation());
 		}
 		else
